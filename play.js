@@ -20,7 +20,11 @@ const connect = function () {
 
   conn.on("connect", () => {
     conn.write("Name: MLM");
+    setInterval(() => {
+      conn.write("Move: up");
+    }, 100);
   });
+
   return conn;
 };
 
