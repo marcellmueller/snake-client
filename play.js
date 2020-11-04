@@ -8,6 +8,9 @@ const connect = function () {
     host: "localhost",
     port: 50541,
   });
+  conn.on("connect", () => {
+    console.log("Connected to server!");
+  });
   // interpret incoming data as text
   conn.setEncoding("utf8");
   // client.js
@@ -15,8 +18,12 @@ const connect = function () {
     console.log("Server says: ", data);
   });
 
+  conn.on("connect", () => {
+    conn.write("Name: MLM");
+  });
   return conn;
 };
 
-console.log("Connecting ...");
 connect();
+
+module.exports = connect;
