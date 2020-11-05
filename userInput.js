@@ -1,3 +1,5 @@
+const { MOVEUP, MOVEDOWN, MOVELEFT, MOVERIGHT } = require("./constants");
+
 let connection;
 
 const setupInput = function (conn) {
@@ -12,17 +14,17 @@ const setupInput = function (conn) {
 };
 const handleUserInput = (key) => {
   if (key === "\u0077") {
-    connection.write("Move: up");
+    connection.write(MOVEUP);
   } // ctrl-c
   if (key === "\u0061") {
     console.log("s");
-    connection.write("Move: down");
+    connection.write(MOVEDOWN);
   } // ctrl-c
   if (key === "\u0073") {
-    connection.write("Move: left");
+    connection.write(MOVELEFT);
   } // ctrl-c
   if (key === "\u0064") {
-    connection.write("Move: right");
+    connection.write(MOVERIGHT);
   } // ctrl-c
   if (key === "\u0077") {
     connection.write("Say: What up homies?");
