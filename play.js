@@ -1,33 +1,11 @@
-const net = require("net");
+const connect = require("./client");
+const setupInput = require("./userInput");
 
 /**
  * Establishes connection with the game server
  */
-const connect = function () {
-  const conn = net.createConnection({
-    host: "localhost",
-    port: 50541,
-  });
-  conn.on("connect", () => {
-    console.log("Connected to server!");
-  });
-  // interpret incoming data as text
-  conn.setEncoding("utf8");
-  // client.js
-  conn.on("data", (data) => {
-    console.log("Server says: ", data);
-  });
-
-  conn.on("connect", () => {
-    conn.write("Name: MLM");
-    setInterval(() => {
-      conn.write("Move: up");
-    }, 100);
-  });
-
-  return conn;
-};
-
+console.log("Connecting ...");
 connect();
 
-module.exports = connect;
+let connection = connect();
+setupInput(connection);
